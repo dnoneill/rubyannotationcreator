@@ -1,0 +1,8 @@
+<% if params[:uri] %>
+<iiif-annotation annotationlist="/annotations/lists?uri=<%= @canvases %>"></iiif-annotation>
+<% else %>
+<% for canvas in  @canvases %>
+<iiif-storyboard annotationlist="/annotations/lists?uri=<%= canvas %>"></iiif-storyboard>
+<a href="?uri=<%= canvas %>">Testing</a>
+<% end %>
+<% end %>

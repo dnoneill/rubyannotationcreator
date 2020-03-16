@@ -1,0 +1,45 @@
+- hosts: all
+  become: yes
+  become_user: root
+  roles:
+    - role: rvm.ruby
+      tags: ruby
+      rvm1_rubies: ['ruby-2.5.1']
+      rvm1_install_flags: '--auto-dotfiles --user-install'
+      rvm1_user: vagrant
+      rvm1_bundler_install: True
+  tasks:
+    - name: dependencies
+      yum:
+        name:
+          - '*'
+          - epel-release
+          - redis
+          - rubygems
+          - nodejs
+          - sqlite
+          - libtiff
+          - libtiff-devel
+          - libtiff-tools
+          - mysql-devel
+          - python-devel
+          - python-pip
+        state: present
+    - include_role:
+        name: geerlingguy.mysql
+      vars:
+        mysql_databases:
+          - name: annoserver
+          - name: annoserver_test
+    - include_role:
+        name: dev-bundle
+      vars:
+        become: yes
+        become_method: sudo
+        become_user: vagrant
+        ruby: "{{bundler_ruby}}"
+    - include_role:
+        name: dev-db-migrate
+      vars:
+        environments:
+          - development

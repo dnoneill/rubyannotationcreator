@@ -1,0 +1,17 @@
+---
+- name: bundle install
+  become_user: vagrant
+  shell: bash -lc "bundle install"
+  args:
+    chdir: /vagrant
+
+- name: export LD_LIBRARY_PATH
+  copy:
+    dest: /etc/profile.d/custom-path.sh
+    content: export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/vagrant/kdu
+
+- name: start redis
+  become_user: vagrant
+  shell: bash -lc "sudo systemctl start redis && sudo systemctl enable redis"
+  args:
+    chdir: /vagrant

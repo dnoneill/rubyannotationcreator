@@ -1,0 +1,4 @@
+<% for result in @results %>
+	<a href="/annotations/<%= result %>"><%= result %></a>
+	<iiif-annotation annotationurl="/annotations/<%= result %>" styling="table_view: true"></iiif-annotation>
+<% end %>
