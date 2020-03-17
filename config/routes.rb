@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+  
   mount Annotot::Engine => '/annotations'
   resources :displayannotations, path: '/listannotations', except: %i[new edit show] do
       collection do
