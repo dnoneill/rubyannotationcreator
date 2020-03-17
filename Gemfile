@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'mysql2'
 gem "annotot", path: "annotot"
 gem "activerecord"
+# Wolftech
+gem 'devise_wolftech_authenticatable', git: 'git@github.ncsu.edu:ncsu-libraries/devise_wolftech_authenticatable.git', branch: 'master'
+gem 'devise'
