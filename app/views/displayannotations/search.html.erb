@@ -1,4 +1,8 @@
+<%= form_tag({:controller => "displayannotations", :action => "search"}, method: :get) do %>
+<%= label_tag "q", "Query" %>
+<%= text_field_tag "q", params[:q] %>
+<% end %>
 <% for result in @results %>
-	<a href="/annotations/<%= result %>"><%= result %></a>
-	<iiif-annotation annotationurl="/annotations/<%= result %>" styling="table_view: true"></iiif-annotation>
+<a href="/annotations/<%= result %>"><%= result %></a>
+<iiif-annotation annotationurl="/annotations/<%= result %>" styling="table_view: true"></iiif-annotation>
 <% end %>

@@ -1,25 +1,36 @@
 <link rel='stylesheet' type='text/css' href='/build/mirador/css/mirador-combined.css'>
-
 <div id="mirador_container">
-<style>#viewer {width: 100%; height: 660px; position: relative;}</style>
-<div id='viewer'></div>
-<script src='/build/mirador/mirador.min.js'></script>
-<script type='text/javascript'>
-   $(function() {
-      myMiradorInstance = Mirador({
-       id: 'viewer',
-       annotationEndpoint: {
-          name: 'Annotot',
-          module: 'AnnototEndpoint',
-          options: {
-            endpoint: '/annotations'
-          }
-        },
-			 sidePanelOptions : {
-           'tocTabAvailable': true,
-           'layersTabAvailable': true,
-           'searchTabAvailable': true
-         }
-     });
-   });
-</script>
+    <style>
+        #viewer {
+            width: 100%;
+            height: 660px;
+            position: relative;
+        }
+    </style>
+    <div id='viewer'></div>
+    <script src='/build/mirador/mirador.min.js'></script>
+    <script type='text/javascript'>
+        var manifests = <%= @manifests %>;
+        var loaded = <%= @loaded %>;
+            $(function() {
+                myMiradorInstance = Mirador({
+                    id: 'viewer',
+                    data: manifests,
+                    windowObjects: [{
+                        loadedManifest: loaded,
+                    }],
+                    annotationEndpoint: {
+                        name: 'Annotot',
+                        module: 'AnnototEndpoint',
+                        options: {
+                            endpoint: '/annotations'
+                        }
+                    },
+                    sidePanelOptions: {
+                        'tocTabAvailable': true,
+                        'layersTabAvailable': true,
+                        'searchTabAvailable': true
+                    }
+                });
+            });
+    </script>

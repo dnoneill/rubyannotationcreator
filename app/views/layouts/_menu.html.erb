@@ -1,0 +1,8 @@
+<div class="menu">
+    <a href="/">Home <i class="fas fa-home"></i></a>
+    <a href="/listannotations">Annotations</a>
+    <a href="/listannotations/search?q=">Search Annotations</a>
+    <% if current_user %>
+    <a href="/profile" style="float: right"><%= current_user.email %></a>
+    <% end %>
+</div>

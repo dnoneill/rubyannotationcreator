@@ -9,6 +9,7 @@ class DisplayannotationsController < ApplicationController
     
     def search
         controller = Annotot::AnnotationsController.new
+        !params[:q] ? params[:q] = '' : ''
         controller.params = params
         search = controller.search
         @results = search.map{|result|result['@id']}

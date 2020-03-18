@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_17_223057) do
+ActiveRecord::Schema.define(version: 2020_03_18_000216) do
 
   create_table "annotot_annotations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "uuid"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 2020_03_17_223057) do
     t.datetime "updated_at", null: false
     t.index ["canvas"], name: "index_annotot_annotations_on_canvas"
     t.index ["uuid"], name: "index_annotot_annotations_on_uuid"
+  end
+
+  create_table "manifests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
