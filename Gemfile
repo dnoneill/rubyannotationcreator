@@ -66,3 +66,4 @@ gem "activerecord"
 # Wolftech
 gem 'devise_wolftech_authenticatable', git: 'git@github.ncsu.edu:ncsu-libraries/devise_wolftech_authenticatable.git', branch: 'master'
 gem 'devise'
+gem 'annotot', git: 'git@github.com:dnoneill/annotot.git', branch: 'master'
